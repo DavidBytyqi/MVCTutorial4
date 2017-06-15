@@ -1,0 +1,52 @@
+﻿@model MVCTutorial4.Models.EmployeeViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+@*<style>
+    .error{
+        color:red;
+    }
+</style>*@
+
+    <div class="container" style="width:40%; margin-top:2%">
+        @using (Html.BeginForm("SaveRecord", "Test", FormMethod.Post))
+        {
+
+
+            @Html.DropDownListFor(model => model.DepartmentId, ViewBag.DepartmentList as SelectList, "--select--", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DepartmentId, "", new { @class = "error" })
+
+            @Html.TextBoxFor(model => model.EmployeeId, new { @class = "form-control", @placeholder = "EmployeeId" })
+            @Html.ValidationMessageFor(model => model.EmployeeId, "", new { @class = "error" })
+
+            @Html.TextBoxFor(model => model.Emri, new { @class = "form-control", @placeholder = "Name" })
+            @Html.ValidationMessageFor(model => model.Emri, "", new { @class = "error" })
+
+            @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @placeholder = "Address" })
+            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "error" })
+            @*<div class="checkbox">
+
+                    <label>
+
+                        @Html.CheckBoxFor(m => m.Remember)
+                        check out this
+
+                    </label>
+
+                </div>*@
+            <input type="submit" value="Submit" class="btn btn-block btn-primary" />
+
+        }
+    </div>
+
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
